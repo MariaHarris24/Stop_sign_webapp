@@ -1,0 +1,47 @@
+{% extends 'headerPage.html' %}
+
+{% block content%}
+
+<h2>Uplaod Image for Classification</h2>
+
+
+<br>
+
+<form method="post" enctype="multipart/form-data" action="predictImage">
+
+    {% csrf_token %}
+    <div class="col-md-4 col-sm-4">
+        <label for="fname">Upload:</label>
+        <input name="filePath" type="file">
+    </div>
+    <br>
+    <input type="submit" value="Submit">
+
+    <br><br>
+</form>
+<br>
+
+
+<form method="post" enctype="multipart/form-data" action="predictImage">
+
+
+    {% csrf_token %}
+    <div class="col-md-4 col-sm-4">
+        <label for="url">Enter an https:// URL:</label>
+    </div>
+
+    <input type="url" name="url" id="url"
+           placeholder="https://example.com"
+           pattern="https://.*" size="30"
+           required>
+
+
+    <input type="submit" value="Submit">
+
+</form>
+
+
+<h2>The number of stop signs detected:  {{num_signs}} at the following coordinates: {{Signs_coord}}</h2>
+<img src={{new_path}} alt='imagename' style="height:600px;">
+
+{% endblock %}
